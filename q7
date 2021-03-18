@@ -1,36 +1,35 @@
-mport requests
-import json
+import urllib.request, urllib.parse, urllib.error
 
-url = "https://novorevan.brisanet.net.br/telefones.txt"
+
+url = 'https://novorevan.brisanet.net.br/telefones.txt'
+soma = 0 
+contador = 0
+parei = False
+print("baixando com urllib")
+urllib.request.urlretrieve(url, "telefones.txt")
  
-resposta = requests.get(url)
-
-numerosStr = resposta.text
-
-numeros = []
-
-def inserirNumeros(data):
-    n = 7
-    for index in range(0, len(data), n):
-        numeros.append(data[index : index + n].rstrip("\n"))
-
-def validaNumeros(numeros):
-    for i in numeros:
-        validaNumero(i)
+print("baixando com urllib2")
+f = urllib.request.urlopen(url)
+data = f.read()
+with open("telefones.txt", "wb") as code:
+    code.write(data)
+    incod = 'utf-8'
+    telefones = str(data.decode(incod)).split('\n')
+    del telefones[-1]
+    
+    for telefone in telefones:
+        
+        for i in range(5):
+            if telefone[i] == telefone[i+1]:
+                parei = True
+                break
+            soma += int(telefone[i])
+        
+        if not parei and soma % 2 == 0 and telefone[-1] == telefone[0]:
+            contador += 1
             
+        print(soma, telefone)
+        soma = 0
+    
 
-def validaNumero(numero):
-    for i in numero:
-        if i == i + 1:
-            numeros.remove(numero)
-        elif sum(i) % 2 != 0:
-            numeros.remove(numero)
-        elif i[0] == i[5]:
-            numeros.remove(numero)         
-
-inserirNumeros(numerosStr)
-validaNumeros(numeros)
-
-print(numeros)
-
-
+print(contador)
