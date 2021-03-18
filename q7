@@ -32,3 +32,5 @@ inserirNumeros(numerosStr)
 validaNumeros(numeros)
 
 print(numeros)
+
+
