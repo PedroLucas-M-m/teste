@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<input placeholder="Digite seu endereço de MAC  =" type="text" id="mac_address" name="mac_address">
+<button id="validar">Enviar</button>
+
+<script>
+function validaEnderecoFisico(endereco) {
+    return /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/.test(endereco);
+}
+
+var input = document.getElementById("mac_address");
+var btn   = document.getElementById("validar");
+
+btn.onclick = function() {
+    if (validaEnderecoFisico(input.value)) {
+        alert("Validou");
+    } else {
+        alert("Não validou");
+        return false;
+    }
+};
+</script>
+
+</body>
+
+</html>
