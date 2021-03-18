@@ -1,0 +1,24 @@
+rom datetime import datetime
+
+data1S = str(input('Insira a primeira data: (dd/MM/YYYY): '))
+try:
+    data1 = datetime.strptime(data1S, '%d/%m/%Y')
+except:
+    print("Formato de data invalido")    
+data2S = str(input('Insira a segunda data: (dd/MM/YYYY): '))
+try:
+    data2 = datetime.strptime(data2S, '%d/%m/%Y')
+except:
+    print("Formato de data invalido")
+    
+def compararData(data1, data2):
+    if data1 > data2:
+        print('A primeira data e maior')
+    elif data2 > data1:
+        print('A segunda data é maior')
+    elif data1 == data2:
+        print('As datas sao iguais')
+    else:
+        print('Datas invalidas')            
+
+compararData(data1, data2)
