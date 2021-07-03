@@ -1,3 +1,3 @@
 # Questoes-de-Teste Para entrevista de emprego 
 
---nessa questoes utilizei Python na maioria 
+- Na maioria das questoes usei `Python` mas tambem fiz uma usando Javascript.
